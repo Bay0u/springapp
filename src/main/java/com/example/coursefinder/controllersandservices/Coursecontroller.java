@@ -42,8 +42,18 @@ public class Coursecontroller {
     }
 
     @RequestMapping(method= RequestMethod.PUT,value="/courses/{code}")
-    public void updateCourse (@RequestBody Course addedcourse , @PathVariable String code){
+    public ResponseEntity<String> updateCourse (@RequestBody Course addedcourse , @PathVariable String code , Errors errors){
         ourservice.updateCourse(addedcourse,code);
+        if(errors.hasErrors()){
+            String errorMessage = "";
+            for (int i = 0 ; i< errors.getErrorCount() ; i++){
+                errorMessage = errorMessage + "" + errors.getAllErrors().get(i).getDefaultMessage()+" ";
+            }
+            return new ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST);
+        }
+
+        ourservice.updateCourse(addedcourse , code);
+        return new ResponseEntity<>(addedcourse.toString(), HttpStatus.OK);
     }
     @RequestMapping(method= RequestMethod.DELETE,value="/courses/{code}")
     public void deleteCourse(@PathVariable String code){

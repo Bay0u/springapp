@@ -23,28 +23,33 @@ public class Studentservice {
 
     List<Student> getallstudents(){
 
-        return Students_Array;
+        //return Students_Array;
+        return studentRepo.findAll();
     }
 
-    public Student getstudent(String email) {
-        return Students_Array.stream().filter( p -> email.equals(p.getEmail())).findFirst().get();
+    public Student getstudent(String id) {
+        //return Students_Array.stream().filter( p -> email.equals(p.getEmail())).findFirst().get();
+        return studentRepo.findById(id).orElse(new Student());
     }
     public void addstudent(Student student) {
-        Students_Array.add(student);
-
+        //Students_Array.add(student);
+        studentRepo.save(student);
     }
 
     public void updatestudent(Student addedstudent, String email) {
-        for (int i = 0 ; i<Students_Array.size() ; i++){
-            if(email.equals(Students_Array.get(i).getEmail())){
-                Students_Array.set(i,addedstudent);
-                return;
-            }
-        }
+//        for (int i = 0 ; i<Students_Array.size() ; i++){
+//            if(email.equals(Students_Array.get(i).getEmail())){
+//                Students_Array.set(i,addedstudent);
+//                return;
+//            }
+//        }
+        studentRepo.save(addedstudent);
     }
 
-    public void deletestudent(String email) {
-        Students_Array.removeIf(p->email.equals(p.getEmail()));
+    public void deletestudent(String id) {
+        //Students_Array.removeIf(p->email.equals(p.getEmail()));
+
+        studentRepo.delete(getstudent(id));
     }
 
     @SneakyThrows

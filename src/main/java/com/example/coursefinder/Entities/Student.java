@@ -1,14 +1,22 @@
 package com.example.coursefinder.Entities;
 
-import com.example.coursefinder.Entities.Course;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "student")
 public class Student {
+    @Getter
+    @Setter
+    @Id
+    private String id;
+
     @Getter
     @Setter
     @NotNull(message = "{studentNameNotNull}")
@@ -46,17 +54,6 @@ public class Student {
     @Setter
     @AssertTrue (message = "{graduatedError}")
     private boolean undergraduate;
-    public Student(){}
-
-    public Student(String name, ArrayList<Course> courses, short gradYear, Date enrollmentDate, String email, String mobilenNumber, boolean undergraduate) {
-        this.name = name;
-        this.courses = courses;
-        this.gradYear = gradYear;
-        this.enrollmentDate = enrollmentDate;
-        this.email = email;
-        this.mobilenNumber = mobilenNumber;
-        this.undergraduate = undergraduate;
-    }
 
     @Override
     public String toString() {
