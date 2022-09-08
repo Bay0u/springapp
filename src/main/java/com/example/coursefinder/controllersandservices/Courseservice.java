@@ -1,16 +1,10 @@
-package com.example.coursefinder;
+package com.example.coursefinder.controllersandservices;
 
+import com.example.coursefinder.Entities.Course;
+import com.example.coursefinder.Repos.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.*;
 
 @Service

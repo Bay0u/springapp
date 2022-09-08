@@ -1,4 +1,4 @@
-package com.example.coursefinder;
+package com.example.coursefinder.mainspring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

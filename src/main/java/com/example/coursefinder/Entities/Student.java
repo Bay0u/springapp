@@ -1,9 +1,9 @@
-package com.example.coursefinder;
+package com.example.coursefinder.Entities;
 
+import com.example.coursefinder.Entities.Course;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;

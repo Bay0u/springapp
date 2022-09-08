@@ -1,5 +1,6 @@
-package com.example.coursefinder;
+package com.example.coursefinder.controllersandservices;
 
+import com.example.coursefinder.Entities.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

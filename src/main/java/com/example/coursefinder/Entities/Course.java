@@ -1,4 +1,4 @@
-package com.example.coursefinder;
+package com.example.coursefinder.Entities;
 
 import lombok.Getter;
 import lombok.Setter;

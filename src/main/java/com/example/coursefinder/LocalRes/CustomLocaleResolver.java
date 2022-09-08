@@ -1,4 +1,4 @@
-package com.example.coursefinder;
+package com.example.coursefinder.LocalRes;
 
 import java.util.Arrays;
 import java.util.List;
