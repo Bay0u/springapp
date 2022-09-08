@@ -13,20 +13,20 @@ package com.example.coursefinder;
 public class Studentcontroller {
 
     @Autowired
-    private Courseservice ourservice;
+    private Studentservice ourservice;
 
     @RequestMapping("/students")
-    public List<Course> getallstudents(){
+    public List<Student> getallstudents(){
 
-        return ourservice.getallcourses();
+        return ourservice.getallstudents();
     }
-    @RequestMapping("/students/{code}")
-    public Course getstudentbyid(@PathVariable String code){
-        return ourservice.getcourse(code);
+    @RequestMapping("/students/{email}")
+    public Student getstudentbyemail(@PathVariable String email){
+        return ourservice.getstudent(email);
     }
 
     @RequestMapping(method= RequestMethod.POST,value="/students")
-    public ResponseEntity<Object> addstudent (@RequestBody @Valid Course newcourse , Errors errors){
+    public ResponseEntity<Object> addstudent (@RequestBody @Valid Student newstudent , Errors errors){
         if(errors.hasErrors()){
             String errorMessage = "";
             for (int i = 0 ; i< errors.getErrorCount() ; i++){
@@ -34,19 +34,18 @@ public class Studentcontroller {
             }
             return new ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST);
         }
-
-        ourservice.addcourse(newcourse);
-        return new ResponseEntity<>(newcourse.toString(), HttpStatus.OK);
+        ourservice.addstudent(newstudent);
+        return new ResponseEntity<>(newstudent.toString(), HttpStatus.OK);
 
     }
 
     @RequestMapping(method= RequestMethod.PUT,value="/students/{code}")
-    public void updatestudent (@RequestBody Course addedcourse , @PathVariable String code){
-        ourservice.updateCourse(addedcourse,code);
+    public void updatestudent (@RequestBody Student addedstudent , @PathVariable String code){
+        ourservice.updatestudent(addedstudent,code);
     }
     @RequestMapping(method= RequestMethod.DELETE,value="/students/{code}")
-    public void deletestudent(@PathVariable String code){
-        ourservice.deleteCourse(code);
+    public void deletestudent(@PathVariable String email){
+        ourservice.deletestudent(email);
     }
 
 
