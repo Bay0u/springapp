@@ -22,9 +22,19 @@ public class Studentcontroller {
         return ourservice.getallstudents();
     }
 
-    @RequestMapping("/students/{email}")
+    @RequestMapping("/students/id/{id}")
     public Student getstudentbyid(@PathVariable String id) {
         return ourservice.getstudent(id);
+    }
+
+    @RequestMapping("/students/name/{name}")
+    public Student getstudentbyname(@PathVariable String name) {
+        return ourservice.getstudentbyname(name);
+    }
+
+    @RequestMapping("/students/email/{email}")
+    public Student getstudentbyemail(@PathVariable String email) {
+        return ourservice.getstudentbyemail(email);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/students")

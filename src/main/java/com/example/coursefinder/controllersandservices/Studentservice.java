@@ -126,4 +126,12 @@ public class Studentservice {
     }
 
 
+    public Student getstudentbyemail(String email) {
+        return studentRepo.findStudentByEmail(email);
+    }
+
+    public Student getstudentbyname(String name) {
+        return studentRepo.findStudentByName(name);
+    }
+
 }
